@@ -16,7 +16,8 @@
     "infra:down:prod": "docker compose --env-file packages/infrastructure/environments/production/.env -f docker-compose.yml -f packages/infrastructure/environments/production/docker-compose.yml down",
     "new-service": "bash scripts/new-service.sh",
     "service:up": "bash scripts/dev-service.sh up",
-    "service:down": "bash scripts/dev-service.sh down"
+    "service:down": "bash scripts/dev-service.sh down",
+    "service:watch": "bash scripts/dev-service.sh watch"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
