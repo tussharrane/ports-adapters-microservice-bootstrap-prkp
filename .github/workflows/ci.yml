@@ -25,6 +25,17 @@ jobs:
         with:
           python-version: '3.13'
 
+      - uses: bufbuild/buf-setup-action@v1
+
+      - uses: arduino/setup-protoc@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Install protoc-gen-prost
+        run: cargo install protoc-gen-prost
+
       - name: Build
         run: pnpm build
 
