@@ -1,0 +1,28 @@
+{
+  "name": "ports-adapters-microservice-bootstrap",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.33.4",
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "lint": "eslint . && pnpm -r --if-present run lint",
+    "infra:up": "docker compose --env-file .env -f docker-compose.yml -f packages/infrastructure/environments/local/docker-compose.yml up -d",
+    "infra:down": "docker compose --env-file .env -f docker-compose.yml -f packages/infrastructure/environments/local/docker-compose.yml down",
+    "infra:up:prod": "docker compose --env-file packages/infrastructure/environments/production/.env -f docker-compose.yml -f packages/infrastructure/environments/production/docker-compose.yml up -d",
+    "infra:down:prod": "docker compose --env-file packages/infrastructure/environments/production/.env -f docker-compose.yml -f packages/infrastructure/environments/production/docker-compose.yml down",
+    "new-service": "bash scripts/new-service.sh",
+    "service:up": "bash scripts/dev-service.sh up",
+    "service:down": "bash scripts/dev-service.sh down"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.20.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.24.0"
+  }
+}

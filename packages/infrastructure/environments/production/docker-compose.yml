@@ -1,0 +1,17 @@
+services:
+  kafka:
+    restart: unless-stopped
+    environment:
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+
+  postgres:
+    restart: unless-stopped
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  kafka-data:
+  postgres-data:

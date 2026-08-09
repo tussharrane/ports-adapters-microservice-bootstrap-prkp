@@ -1,0 +1,17 @@
+[project]
+name = "__service_name__"
+version = "0.1.0"
+description = "__SERVICE_NAME__ service"
+requires-python = ">=3.11"
+dependencies = ["protobuf>=7.35.1,<8", "confluent-kafka>=2.15,<3", "psycopg[binary,pool]>=3,<4"]
+
+[project.optional-dependencies]
+lint = ["ruff>=0.16,<1"]
+typecheck = ["pyright>=1.1,<2"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+extend-exclude = ["generated"]

@@ -1,0 +1,10 @@
+{
+  "name": "infra-env-local",
+  "version": "1.0.0",
+  "description": "Local Docker Compose overlay (host port mappings, dev-friendly Kafka settings) for the ports-adapters-microservice-bootstrap infra stack.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.33.4"
+}

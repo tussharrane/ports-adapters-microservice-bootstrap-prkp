@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-and-typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Set up Python service virtualenvs
+        run: |
+          set -euo pipefail
+          for pyproject in services/*/pyproject.toml; do
+            [[ -e "$pyproject" ]] || continue
+            service_dir="$(dirname "$pyproject")"
+            echo "Creating venv and installing dependencies for $service_dir"
+            python3 -m venv --clear "$service_dir/.venv"
+            PY_DEPS=()
+            while IFS= read -r dep; do
+              PY_DEPS+=("$dep")
+            done < <("$service_dir/.venv/bin/python3" -c "import tomllib; data=tomllib.load(open('$pyproject', 'rb')); deps=data['project']['dependencies']; opt=data['project'].get('optional-dependencies', {}); deps+=opt.get('lint', []); deps+=opt.get('typecheck', []); print('\n'.join(deps))")
+            "$service_dir/.venv/bin/pip" install -q "${PY_DEPS[@]}"
+          done
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck

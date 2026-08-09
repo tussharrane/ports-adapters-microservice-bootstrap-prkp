@@ -1,0 +1,3 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/packages/service-template/templates/python/.venv/bin/python"
+}

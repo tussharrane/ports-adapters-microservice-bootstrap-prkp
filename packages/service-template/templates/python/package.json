@@ -1,0 +1,8 @@
+{
+  "name": "__SERVICE_NAME__",
+  "private": true,
+  "scripts": {
+    "lint": "make lint",
+    "typecheck": "make typecheck"
+  }
+}

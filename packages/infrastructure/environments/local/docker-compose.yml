@@ -1,0 +1,10 @@
+services:
+  kafka:
+    environment:
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    ports:
+      - "${KAFKA_HOST_PORT:-29092}:29092"
+
+  postgres:
+    ports:
+      - "${POSTGRES_HOST_PORT:-5433}:5432"

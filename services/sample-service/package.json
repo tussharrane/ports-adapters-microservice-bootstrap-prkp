@@ -1,0 +1,8 @@
+{
+  "name": "sample-service",
+  "private": true,
+  "scripts": {
+    "lint": "make lint",
+    "typecheck": "make typecheck"
+  }
+}

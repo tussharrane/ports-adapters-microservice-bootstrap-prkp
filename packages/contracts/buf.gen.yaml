@@ -1,0 +1,4 @@
+version: v2
+plugins:
+  - local: protoc-gen-prost
+    out: ../service-template/templates/rust/generated

@@ -1,0 +1,6 @@
+.venv/
+.ruff_cache/
+target/
+__pycache__/
+*.pyc
+.git

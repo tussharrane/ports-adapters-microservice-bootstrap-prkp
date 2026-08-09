@@ -1,0 +1,22 @@
+{
+  "executionEnvironments": [
+    {
+      "root": "packages/service-template/templates/python",
+      "extraPaths": [
+        "packages/service-template/templates/python/src",
+        "packages/service-template/templates/python/src/adapters/in",
+        "packages/service-template/templates/python/src/ports/in",
+        "packages/service-template/templates/python/generated"
+      ]
+    },
+    {
+      "root": "services/sample-service",
+      "extraPaths": [
+        "services/sample-service/src",
+        "services/sample-service/src/adapters/in",
+        "services/sample-service/src/ports/in",
+        "services/sample-service/generated"
+      ]
+    }
+  ]
+}
